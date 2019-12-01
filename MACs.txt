@@ -1,0 +1,6 @@
+ MACs conocidas:
+ anuca 20:16:D8:02:38:8E
+ tablet: 60:A4:4C:99:96:CB
+ movil emilio: F4:F5:24:77:8C:97
+ movil ana: A8:96:75:B4:6C:BF
+ router: 70:4D:7B:60:8F:4C
