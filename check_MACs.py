@@ -4,6 +4,7 @@ import os
 import nmap
 from datetime import datetime
 import argparse
+import easygui
 
 parser = argparse.ArgumentParser(description='To check MACs connected on our local net and compare them against a list of allowed MACs')
 parser.add_argument("--macs", required=True, type=str, help="File with list of allowed MACs")
@@ -28,6 +29,7 @@ def CheckMAC(mac):
         log.close()
     else:
         print("MAC ", mac, " is NOT in allowed list")
+        easygui.msgbox("Found a MAC address no present in the alowed list!", title="WARNING!")
         log = open(CurrentPath + "/macs_log.txt", "a+")
         log.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ", MAC "+ mac + " is NOT in allowed list \n")
         log.close()
