@@ -3,12 +3,20 @@
 import os
 import nmap
 from datetime import datetime
+import argparse
+
+parser = argparse.ArgumentParser(description='To check MACs connected on our local net and compare them against a list of allowed MACs')
+parser.add_argument("--macs", required=True, type=str, help="File with list of allowed MACs")
+args = parser.parse_args()
+
+macs_file = '/' + args.macs
 
 def CheckMAC(mac):
     CurrentPath = os.path.dirname(os.path.abspath(__file__))
-    with open(CurrentPath + "/MACs.txt") as f:
+    with open(CurrentPath + macs_file) as f:
         datafile = f.readlines()
     f.close();
+    print(datafile)
     found = False  
     for line in datafile:
         if mac in line:
@@ -38,8 +46,8 @@ def FindConnectedMACs():
 			print ("Nothin here")
 	return ConnectedMACsList
 
-        
 ConnectedMACs = FindConnectedMACs()
 for mac in ConnectedMACs:
+	print("Going to check a MAC")
 	CheckMAC(mac)
 
